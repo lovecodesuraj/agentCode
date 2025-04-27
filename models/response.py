@@ -1,0 +1,20 @@
+from typing import List
+from langchain_core.pydantic_v1 import BaseModel, Field
+
+
+class QueryValidatorResponse(BaseModel):
+    response: str = Field(description="Agent response")
+    input_required: bool = Field(description="True if nessecery if nessecery is provided")
+    missing_info: str = Field(description="Imformation needed from user")
+
+
+class SubTask(BaseModel):
+    id: str = Field(description="Unique identifier for the subtask, e.g., 'task-1'")
+    description: str = Field(description="Clear description of what the subtask is about")
+    dependencies: List[str] = Field(default_factory=list, description="List of task IDs this task depends on")
+
+class TaskGeneratorResponse(BaseModel):
+    overall_goal: str = Field(description="High-level goal based on user prompt")
+    tasks: List[SubTask] = Field(description="List of subtasks required to achieve the goal")
+    # input_required: bool = Field(description="True if task breakdown is complete and detailed")
+    # missing_info: str = Field(description="Additional information needed from user, if any, else empty")

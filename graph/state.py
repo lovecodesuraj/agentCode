@@ -1,0 +1,14 @@
+from typing import Annotated
+
+from typing_extensions import TypedDict
+from langgraph.graph.message import add_messages
+
+
+ 
+
+
+class State(TypedDict):
+    messages: Annotated[list, add_messages]
+    status: Annotated[str, "status of the graph progress"]
+    input_required: Annotated[bool, "Whether human input is required or not"]
+    tasks: Annotated[list, "List of tasks to be completed"]
