@@ -9,7 +9,8 @@ class TerminalOrchestrator:
             "messages": [],
             "status": "waiting_input",
             "input_required": False,
-            "tasks": []
+            "tasks": [],
+            "code": ""
         }
         self.started = False
 
@@ -18,6 +19,7 @@ class TerminalOrchestrator:
         print(f"Thread ID: {self.thread_id}")
         print(f"Status: {self.state['status']}")
         print(f"Tasks: {len(self.state['tasks'])}")
+        print(f"Code: {self.state['code']}")
         print("Messages:")
         for msg in self.state["messages"]:
             if isinstance(msg, HumanMessage):

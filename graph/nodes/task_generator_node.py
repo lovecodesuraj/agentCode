@@ -19,7 +19,7 @@ def task_generator_node(state):
         AIMessage(content=f"Tasks generated successfully: {response.tasks}")
     )
     state["tasks"] = response.tasks
-    state["status"] = "complete"
+    # state["status"] = "complete"
     # print(f"Tasks: {state['tasks']}")
     # state["tasks"].extend([task.dict() for task in response.tasks])
     
